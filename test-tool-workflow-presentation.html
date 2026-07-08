@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbound Software - New Test Tool Request Workflow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f0f0;
+        }
+        .slide-container {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            padding: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-y: auto;
+        }
+        .slide-container.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .slide {
+            background: white;
+            border-radius: 10px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        h3 {
+            color: #667eea;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        p, li {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        ul {
+            margin-left: 30px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1em;
+        }
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        .slide-number {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            color: white;
+            font-size: 1.1em;
+        }
+        .flow-diagram {
+            background: #f9f9f9;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.95em;
+            overflow-x: auto;
+        }
+        .stakeholder {
+            background: #e8f0ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .success-criteria {
+            background: #e8ffe8;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide-container active">
+    <div class="slide">
+        <h1>🎯 Inbound Software</h1>
+        <h2>New Test Tool Request Workflow</h2>
+        <p style="font-size: 1.3em; margin-top: 40px; color: #764ba2;"><strong>Purpose:</strong> Manage and streamline requests for new test tools from DSV test manager through approval and registration</p>
+        <div style="margin-top: 60px;">
+            <h3>Key Stakeholders:</h3>
+            <div class="stakeholder">
+                <p>👤 <strong>DSV Test Manager</strong> - Initiator</p>
+            </div>
+            <div class="stakeholder">
+                <p>🔍 <strong>QA Core</strong> - Assessor & Researcher</p>
+            </div>
+            <div class="stakeholder">
+                <p>✅ <strong>QA Chapter</strong> - Approver</p>
+            </div>
+            <div class="stakeholder">
+                <p>📋 <strong>EA Team</strong> - Registrar</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2: Process Overview -->
+<div class="slide-container">
+    <div class="slide">
+        <h2>Process Flow Overview</h2>
+        <div class="flow-diagram">
+DSV Test Manager
+        ↓
+   Raises Request
+        ↓
+  QA Core Reviews
+        ↓
+Tool Exists? ──YES──→ Provide Recommendation & Close
+        ├─NO
+        ↓
+Tool Research Phase
+  • Evaluate capabilities
+  • Check compatibility
+  • Assess cost & licensing
+  • Prepare recommendation
+        ↓
+QA Chapter Reviews
+        ├─REJECTED → Close with Feedback
+        └─APPROVED
+            ↓
+    EA Team Registers Tool
+            ↓
+   Tool Added to Pool
+            ↓
+Request Closed Successfully
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: Detailed Stages -->
+<div class="slide-container">
+    <div class="slide">
+        <h2>Workflow Stages - Detailed Breakdown</h2>
+        
+        <h3>Stage 1: Request Initiation</h3>
+        <p><strong>Actor:</strong> DSV Test Manager | <strong>Output:</strong> Formal request with tool requirements</p>
+        
+        <h3>Stage 2: Initial Assessment</h3>
+        <p><strong>Actor:</strong> QA Core | <strong>Decision:</strong> Tool exists in pool or not?</p>
+        
+        <h3>Stage 3: Tool Research & Recommendation</h3>
+        <ul>
+            <li>Conduct comprehensive tool research</li>
+            <li>Evaluate capabilities and compatibility</li>
+            <li>Assess cost, licensing, and maintenance</li>
+            <li>Prepare recommendation document</li>
+        </ul>
+        
+        <h3>Stage 4: Review & Approval</h3>
+        <p><strong>Actor:</strong> QA Chapter | <strong>Decision:</strong> Approve or reject?</p>
+        
+        <h3>Stage 5: Tool Registration</h3>
+        <ul>
+            <li>QA Core contacts EA team</li>
+            <li>EA team registers tool in system</li>
+            <li>Tool added to DSV test tool pool</li>
+            <li>All stakeholders notified</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 4: Decision Points -->
+<div class="slide-container">
+    <div class="slide">
+        <h2>Key Decision Points & Outcomes</h2>
+        
+        <h3>Decision Point 1: Tool Pool Check</h3>
+        <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 15px 0; border-radius: 5px;">
+            <p><strong>Question:</strong> Does the tool exist in DSV Test Tool Pool?</p>
+            <p style="margin-top: 10px;">✓ <strong>YES</strong> → Provide recommendation & Close (Fast Track)</p>
+            <p>✗ <strong>NO</strong> → Proceed to Research Phase</p>
+        </div>
+        
+        <h3>Decision Point 2: QA Chapter Approval</h3>
+        <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 15px 0; border-radius: 5px;">
+            <p><strong>Question:</strong> Is tool approved by QA Chapter?</p>
+            <p style="margin-top: 10px;">✓ <strong>YES</strong> → Proceed to EA Registration</p>
+            <p>✗ <strong>NO</strong> → Close with Feedback to Requester</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: Success Criteria & Timeline -->
+<div class="slide-container">
+    <div class="slide">
+        <h2>Success Criteria & Timeline</h2>
+        
+        <h3>Success Criteria</h3>
+        <div class="success-criteria">
+            <ul style="margin-left: 20px;">
+                <li>✓ Tool research is thorough and documented</li>
+                <li>✓ QA Chapter approval obtained before EA registration</li>
+                <li>✓ Tool successfully registered in system</li>
+                <li>✓ All stakeholders notified of completion</li>
+                <li>✓ Tool available in DSV test tool pool</li>
+            </ul>
+        </div>
+        
+        <h3>Timeline Expectations</h3>
+        <table>
+            <tr>
+                <th>Stage</th>
+                <th>Typical Duration</th>
+            </tr>
+            <tr>
+                <td>Request Review</td>
+                <td>2-3 business days</td>
+            </tr>
+            <tr>
+                <td>Tool Research</td>
+                <td>5-10 business days</td>
+            </tr>
+            <tr>
+                <td>QA Chapter Review</td>
+                <td>3-5 business days</td>
+            </tr>
+            <tr>
+                <td>EA Registration</td>
+                <td>2-3 business days</td>
+            </tr>
+            <tr style="background: #d4edff; font-weight: bold;">
+                <td>TOTAL</td>
+                <td>12-21 business days</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Slide 6: Responsible Parties -->
+<div class="slide-container">
+    <div class="slide">
+        <h2>Responsible Parties & Handoffs</h2>
+        <table>
+            <tr>
+                <th>Stage</th>
+                <th>Responsible Party</th>
+                <th>Hands Off To</th>
+            </tr>
+            <tr>
+                <td>Initiation</td>
+                <td>DSV Test Manager</td>
+                <td>QA Core</td>
+            </tr>
+            <tr>
+                <td>Assessment</td>
+                <td>QA Core</td>
+                <td>QA Core (if research needed)</td>
+            </tr>
+            <tr>
+                <td>Research</td>
+                <td>QA Core</td>
+                <td>QA Chapter</td>
+            </tr>
+            <tr>
+                <td>Approval</td>
+                <td>QA Chapter</td>
+                <td>QA Core</td>
+            </tr>
+            <tr>
+                <td>Registration</td>
+                <td>QA Core + EA Team</td>
+                <td>Complete</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Slide 7: Contact & Support -->
+<div class="slide-container">
+    <div class="slide">
+        <h2>Contact & Support</h2>
+        <p style="font-size: 1.2em; margin-bottom: 40px;"><strong>Questions or Issues?</strong></p>
+        
+        <div class="stakeholder">
+            <p><strong>For Request Status:</strong> Contact QA Core</p>
+        </div>
+        <div class="stakeholder">
+            <p><strong>For Tool Integration:</strong> Contact EA Team</p>
+        </div>
+        <div class="stakeholder">
+            <p><strong>For Workflow Questions:</strong> Contact QA Chapter Lead</p>
+        </div>
+        
+        <h3 style="margin-top: 50px;">Key Contacts:</h3>
+        <p><strong>QA Core Lead:</strong> [TBD]</p>
+        <p><strong>QA Chapter Lead:</strong> [TBD]</p>
+        <p><strong>EA Team:</strong> [TBD]</p>
+    </div>
+</div>
+
+<!-- Controls -->
+<div class="slide-number" id="slideNumber">Slide 1 of 7</div>
+<div class="controls">
+    <button onclick="previousSlide()">← Previous</button>
+    <button onclick="nextSlide()">Next →</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide-container');
+    const totalSlides = slides.length;
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + totalSlides) % totalSlides;
+        slides[currentSlide].classList.add('active');
+        document.getElementById('slideNumber').textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function previousSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') previousSlide();
+    });
+</script>
+
+</body>
+</html>
